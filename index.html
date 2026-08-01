@@ -3,163 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmet Kenkes - IT Portfolyo</title>
+    <title>Ahmet Kenkes | IT-Portfolio & Bewerbung 2027</title>
+    <!-- FontAwesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
+            --bg-color: #090d16;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-hover: rgba(51, 65, 85, 0.8);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --accent: #38bdf8;
-            --border: #334155;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border: rgba(51, 65, 85, 0.6);
+            --radius: 12px;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            max-width: 750px;
-            margin: 60px auto;
-            padding: 0 24px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px;
             line-height: 1.6;
+            background-image: radial-gradient(circle at top right, rgba(56, 189, 248, 0.05), transparent 40%);
         }
+
         header {
             border-bottom: 1px solid var(--border);
-            padding-bottom: 24px;
-            margin-bottom: 32px;
+            padding-bottom: 32px;
+            margin-bottom: 40px;
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 28px;
         }
+
+        .profile-container {
+            position: relative;
+        }
+
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--accent);
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
+
         h1 {
-            font-size: 2.2rem;
-            margin: 0 0 8px 0;
-            color: var(--text-main);
+            font-size: 2.4rem;
+            margin: 0 0 6px 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
+
         .subtitle {
             color: var(--accent);
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-        h2 {
-            font-size: 1.4rem;
-            margin-top: 40px;
+            font-size: 1.15rem;
+            font-weight: 600;
             margin-bottom: 16px;
-            color: var(--text-main);
         }
+
+        h2 {
+            font-size: 1.3rem;
+            margin-top: 48px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h2 i {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
         .project-grid, .cert-grid {
             display: grid;
-            gap: 16px;
+            grid-template-columns: 1fr;
+            gap: 18px;
         }
+
         .project, .cert-item {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
-            padding: 20px;
-            border-radius: 8px;
-            transition: border-color 0.2s;
+            padding: 24px;
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .project:hover, .cert-item:hover {
             border-color: var(--accent);
+            background-color: var(--card-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -10px var(--accent-glow);
         }
+
         .project h3, .cert-item h3 {
             margin: 0 0 8px 0;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+
         .project p, .cert-item p {
             color: var(--text-muted);
             margin: 0 0 16px 0;
             font-size: 0.95rem;
         }
+
+        .tech-stack {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
         a {
             color: var(--accent);
             text-decoration: none;
             font-weight: 500;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: #0f172a;
-            padding: 10px 18px;
-            border-radius: 6px;
-            font-weight: 600;
-            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             transition: opacity 0.2s;
         }
-        .btn:hover {
-            opacity: 0.9;
+
+        a:hover {
+            opacity: 0.8;
             text-decoration: none;
         }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--accent);
+            color: #090d16;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 4px 14px var(--accent-glow);
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3);
+            color: #090d16;
+        }
+
         .contact-box {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
-            padding: 20px;
-            border-radius: 8px;
+            padding: 24px;
+            border-radius: var(--radius);
+            display: grid;
+            gap: 12px;
+            backdrop-filter: blur(10px);
         }
-        .contact-box p {
-            margin: 8px 0;
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
         }
-        @media (max-width: 600px) {
+
+        .contact-item i {
+            color: var(--accent);
+            width: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 650px) {
             header {
                 flex-direction: column;
                 text-align: center;
+            }
+            .tech-stack {
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <img src="profil.jpeg" alt="Ahmet Kenkes" class="profile-img">
+        <div class="profile-container">
+            <img src="profil.jpeg" alt="Ahmet Kenkes" class="profile-img">
+        </div>
         <div>
             <h1>Ahmet Kenkes</h1>
             <div class="subtitle">Fachinformatiker für Systemintegration (Bewerbung 2027)</div>
-            <a href="cv.pdf" class="btn" target="_blank">📄 Lebenslauf ansehen / Download</a>
+            <a href="cv.pdf" class="btn" target="_blank"><i class="fa-solid fa-file-pdf"></i> Lebenslauf ansehen</a>
         </div>
     </header>
 
-    <h2>Projekte & Repositories</h2>
+    <h2><i class="fa-solid fa-code-branch"></i> Projekte & Repositories</h2>
     <div class="project-grid">
         <div class="project">
-            <h3>System Inventory Script</h3>
+            <h3><span>System Inventory Script</span> <i class="fa-brands fa-github"></i></h3>
+            <div class="tech-stack">
+                <span class="badge">PowerShell</span>
+                <span class="badge">Automation</span>
+            </div>
             <p>PowerShell-Skript zur automatisierten Erfassung von System-, Hardware- und Netzwerkkonfigurationen.</p>
-            <a href="https://github.com/ahmetkenkes/System-Inventory-Script" target="_blank">Repository ansehen &rarr;</a>
+            <a href="https://github.com/ahmetkenkes/System-Inventory-Script" target="_blank">Repository ansehen <i class="fa-solid fa-arrow-right-long"></i></a>
         </div>
 
         <div class="project">
-            <h3>Linux & Network Notes</h3>
+            <h3><span>Linux & Network Notes</span> <i class="fa-brands fa-github"></i></h3>
+            <div class="tech-stack">
+                <span class="badge">Linux</span>
+                <span class="badge">Networking</span>
+                <span class="badge">Bash</span>
+            </div>
             <p>Dokumentation und Befehlsreferenzen für Linux-Systemadministration und Netzwerkgrundlagen.</p>
-            <a href="https://github.com/ahmetkenkes/Linux-Network-Notes" target="_blank">Repository ansehen &rarr;</a>
+            <a href="https://github.com/ahmetkenkes/Linux-Network-Notes" target="_blank">Repository ansehen <i class="fa-solid fa-arrow-right-long"></i></a>
         </div>
     </div>
 
-    <h2>Zertifikate & Zeugnisse</h2>
+    <h2><i class="fa-solid fa-award"></i> Zertifikate & Zeugnisse</h2>
     <div class="cert-grid">
         <div class="cert-item">
             <h3>Schulzeugnis / Abschluss</h3>
             <p>Schulische Qualifikation und Leistungsübersicht.</p>
-            <a href="zeugnis.pdf" target="_blank">Dokument ansehen &rarr;</a>
+            <a href="zeugnis.pdf" target="_blank">Dokument ansehen <i class="fa-solid fa-arrow-right-long"></i></a>
         </div>
 
         <div class="cert-item">
             <h3>IT / Sprachzertifikate</h3>
             <p>Relevante Weiterbildungsnachweise und Zertifikate.</p>
-            <a href="zertifikat.pdf" target="_blank">Dokument ansehen &rarr;</a>
+            <a href="zertifikat.pdf" target="_blank">Dokument ansehen <i class="fa-solid fa-arrow-right-long"></i></a>
         </div>
     </div>
 
-    <h2>Kontakt</h2>
+    <h2><i class="fa-solid fa-address-card"></i> Kontakt</h2>
     <div class="contact-box">
-        <p>E-Mail: <a href="mailto:ahmet.kenkes@icloud.com">ahmet.kenkes@icloud.com</a></p>
-        <p>GitHub: <a href="https://github.com/ahmetkenkes" target="_blank">github.com/ahmetkenkes</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/ahmetkenkes" target="_blank">linkedin.com/in/ahmetkenkes</a></p>
+        <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>E-Mail: <a href="mailto:ahmet.kenkes@icloud.com">ahmet.kenkes@icloud.com</a></span>
+        </div>
+        <div class="contact-item">
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub: <a href="https://github.com/ahmetkenkes" target="_blank">github.com/ahmetkenkes</a></span>
+        </div>
+        <div class="contact-item">
+            <i class="fa-brands fa-linkedin"></i>
+            <span>LinkedIn: <a href="https://linkedin.com/in/ahmetkenkes" target="_blank">linkedin.com/in/ahmetkenkes</a></span>
+        </div>
     </div>
+
 </body>
 </html>
