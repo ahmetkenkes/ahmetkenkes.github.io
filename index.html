@@ -1,4 +1,4 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -26,6 +26,16 @@
             border-bottom: 1px solid var(--border);
             padding-bottom: 24px;
             margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
         }
         h1 {
             font-size: 2.2rem;
@@ -43,25 +53,25 @@
             margin-bottom: 16px;
             color: var(--text-main);
         }
-        .project-grid {
+        .project-grid, .cert-grid {
             display: grid;
             gap: 16px;
         }
-        .project {
+        .project, .cert-item {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
             padding: 20px;
             border-radius: 8px;
             transition: border-color 0.2s;
         }
-        .project:hover {
+        .project:hover, .cert-item:hover {
             border-color: var(--accent);
         }
-        .project h3 {
+        .project h3, .cert-item h3 {
             margin: 0 0 8px 0;
             font-size: 1.2rem;
         }
-        .project p {
+        .project p, .cert-item p {
             color: var(--text-muted);
             margin: 0 0 16px 0;
             font-size: 0.95rem;
@@ -74,6 +84,20 @@
         a:hover {
             text-decoration: underline;
         }
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #0f172a;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 12px;
+            transition: opacity 0.2s;
+        }
+        .btn:hover {
+            opacity: 0.9;
+            text-decoration: none;
+        }
         .contact-box {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
@@ -83,12 +107,22 @@
         .contact-box p {
             margin: 8px 0;
         }
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Ahmet Kenkes</h1>
-        <div class="subtitle">Fachinformatiker für Systemintegration (Bewerbung 2027)</div>
+        <img src="profil.jpg" alt="Ahmet Kenkes" class="profile-img">
+        <div>
+            <h1>Ahmet Kenkes</h1>
+            <div class="subtitle">Fachinformatiker für Systemintegration (Bewerbung 2027)</div>
+            <a href="cv.pdf" class="btn" target="_blank">📄 Lebenslauf ansehen / Download</a>
+        </div>
     </header>
 
     <h2>Projekte & Repositories</h2>
@@ -103,6 +137,21 @@
             <h3>Linux & Network Notes</h3>
             <p>Dokumentation und Befehlsreferenzen für Linux-Systemadministration und Netzwerkgrundlagen.</p>
             <a href="https://github.com/ahmetkenkes/Linux-Network-Notes" target="_blank">Repository ansehen &rarr;</a>
+        </div>
+    </div>
+
+    <h2>Zertifikate & Zeugnisse</h2>
+    <div class="cert-grid">
+        <div class="cert-item">
+            <h3>Schulzeugnis / Abschluss</h3>
+            <p>Schulische Qualifikation und Leistungsübersicht.</p>
+            <a href="zeugnis.pdf" target="_blank">Dokument ansehen &rarr;</a>
+        </div>
+
+        <div class="cert-item">
+            <h3>IT / Sprachzertifikate</h3>
+            <p>Relevante Weiterbildungsnachweise und Zertifikate.</p>
+            <a href="zertifikat.pdf" target="_blank">Dokument ansehen &rarr;</a>
         </div>
     </div>
 
