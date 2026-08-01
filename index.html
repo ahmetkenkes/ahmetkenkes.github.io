@@ -3,38 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmet Kenkes | IT Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    <title>Ahmet Kenkes - IT Portfolyo</title>
     <style>
         :root {
-            --bg-deep: #0a101f;
-            --bg-card: rgba(30, 41, 59, 0.6);
-            --text-main: #f1f5f9;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --accent: #22d3ee;
-            --accent-glow: rgba(34, 211, 238, 0.15);
-            --border: rgba(148, 163, 184, 0.1);
-            --ease: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --accent: #38bdf8;
+            --border: #334155;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-deep);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.7;
+            max-width: 750px;
+            margin: 60px auto;
+            padding: 0 24px;
+            line-height: 1.6;
+        }
+        header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
             display: flex;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 80px 20px;
-            background-image: 
+            align-items: center;
+            gap: 24px;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin: 0 0 8px 0;
+            color: var(--text-main);
+        }
+        .subtitle {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+        .project-grid, .cert-grid {
+            display: grid;
+            gap: 16px;
+        }
+        .project, .cert-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            transition: border-color 0.2s;
+        }
+        .project:hover, .cert-item:hover {
+            border-color: var(--accent);
+        }
+        .project h3, .cert-item h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.2rem;
+        }
+        .project p, .cert-item p {
+            color: var(--text-muted);
+            margin: 0 0 16px 0;
+            font-size: 0.95rem;
+        }
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #0f172a;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 12px;
+            transition: opacity 0.2s;
+        }
+        .btn:hover {
+            opacity: 0.9;
+            text-decoration: none;
+        }
+        .contact-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .contact-box p {
+            margin: 8px 0;
+        }
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="profil.jpeg" alt="Ahmet Kenkes" class="profile-img">
+        <div>
+            <h1>Ahmet Kenkes</h1>
+            <div class="subtitle">Fachinformatiker für Systemintegration (Bewerbung 2027)</div>
+            <a href="cv.pdf" class="btn" target="_blank">📄 Lebenslauf ansehen / Download</a>
+        </div>
+    </header>
+
+    <h2>Projekte & Repositories</h2>
+    <div class="project-grid">
+        <div class="project">
+            <h3>System Inventory Script</h3>
+            <p>PowerShell-Skript zur automatisierten Erfassung von System-, Hardware- und Netzwerkkonfigurationen.</p>
+            <a href="https://github.com/ahmetkenkes/System-Inventory-Script" target="_blank">Repository ansehen &rarr;</a>
+        </div>
+
+        <div class="project">
+            <h3>Linux & Network Notes</h3>
+            <p>Dokumentation und Befehlsreferenzen für Linux-Systemadministration und Netzwerkgrundlagen.</p>
+            <a href="https://github.com/ahmetkenkes/Linux-Network-Notes" target="_blank">Repository ansehen &rarr;</a>
+        </div>
+    </div>
+
+    <h2>Zertifikate & Zeugnisse</h2>
+    <div class="cert-grid">
+        <div class="cert-item">
+            <h3>Schulzeugnis / Abschluss</h3>
+            <p>Schulische Qualifikation und Leistungsübersicht.</p>
+            <a href="zeugnis.pdf" target="_blank">Dokument ansehen &rarr;</a>
+        </div>
+
+        <div class="cert-item">
+            <h3>IT / Sprachzertifikate</h3>
+            <p>Relevante Weiterbildungsnachweise und Zertifikate.</p>
+            <a href="zertifikat.pdf" target="_blank">Dokument ansehen &rarr;</a>
+        </div>
+    </div>
+
+    <h2>Kontakt</h2>
+    <div class="contact-box">
+        <p>E-Mail: <a href="mailto:ahmet.kenkes@icloud.com">ahmet.kenkes@icloud.com</a></p>
+        <p>GitHub: <a href="https://github.com/ahmetkenkes" target="_blank">github.com/ahmetkenkes</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/ahmetkenkes" target="_blank">linkedin.com/in/ahmetkenkes</a></p>
+    </div>
+</body>
+</html>            background-image: 
                 radial-gradient(at 10% 10%, rgba(34, 211, 238, 0.08) 0px, transparent 50%),
                 radial-gradient(at 90% 90%, rgba(30, 64, 175, 0.15) 0px, transparent 50%);
             background-attachment: fixed;
