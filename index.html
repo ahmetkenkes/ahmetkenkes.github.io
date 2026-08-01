@@ -3,38 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmet Kenkes - IT Portfolyo</title>
+    <title>Ahmet Kenkes | IT Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
+            --bg-deep: #0a101f;
+            --bg-card: rgba(30, 41, 59, 0.6);
+            --text-main: #f1f5f9;
             --text-muted: #94a3b8;
-            --accent: #38bdf8;
-            --border: #334155;
+            --accent: #22d3ee; /* Neon Cyan */
+            --accent-glow: rgba(34, 211, 238, 0.15);
+            --border: rgba(148, 163, 184, 0.1);
+            --ease: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
             color: var(--text-main);
-            max-width: 750px;
-            margin: 60px auto;
-            padding: 0 24px;
-            line-height: 1.6;
+            line-height: 1.7;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 80px 20px;
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(34, 211, 238, 0.08) 0px, transparent 50%),
+                radial-gradient(at 90% 90%, rgba(30, 64, 175, 0.15) 0px, transparent 50%);
+            background-attachment: fixed;
         }
+
+        .main-container {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        /* Header Estetiği */
         header {
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 24px;
-            margin-bottom: 32px;
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 30px;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
         }
+
+        .profile-img-wrapper {
+            position: relative;
+            padding: 4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), transparent 60%);
+        }
+
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             object-fit: cover;
+            border: 4px solid var(--bg-deep);
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+            background: linear-gradient(to right, var(--text-main), #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .tagline {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 400px;
+            margin-bottom: 16px;
+        }
+
+        /* Buton Estetiği */
+        .btn-cv {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: var(--ease);
+            margin-top: 10px;
+        }
+
+        .btn-cv:hover {
+            background-color: var(--accent-glow);
+            box-shadow: 0 4px 12px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Bölüm Başlıkları */
+        h2 {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 24px;
+            background-color: var(--accent);
+            border-radius: 3px;
+        }
+
+        /* Grid Yapıları */
+        .grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        /* Glassmorphism Kartlar */
+        .card {
+            background-color: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 12px;
+            transition: var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.02), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(34, 211, 238, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+        }
+
+        .card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        /* Proje Linkleri */
+        .card-link {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.8;
+            transition: var(--ease);
+        }
+
+        .card-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* İletişim Kutusu */
+        .contact-box {
+            background-color: rgba(30, 41, 59, 0.3);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .contact-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-item strong {
+            color: var(--text-main);
+            width: 80px;
+            display: inline-block;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--ease);
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        /* Responsive Tasarım */
+        @media (max-width: 600px) {
+            body {
+                padding: 40px 20px;
+            }
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .profile-img {
+                width: 110px;
+                height: 110px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <div class="profile-img-wrapper">
+                <img src="profil.jpeg" alt="Ahmet Kenkes" class="profile-img">
+            </div>
+            <div>
+                <h1>Ahmet Kenkes</h1>
+                <div class="subtitle">Aspiring Fachinformatiker Systemintegration</div>
+                <p class="tagline">Leidenschaft für IT-Infrastruktur, Cloud-Technologien und Automatisierung. Auf der Suche nach einem Ausbildungsplatz für 2027.</p>
+                <a href="cv.pdf" class="btn-cv" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Lebenslauf (PDF)
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <h2>Projekte & HomeLab</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>HomeLab & Virtualization</h3>
+                    <p>Aufbau und Administration einer lokalen Testumgebung mit Proxmox VE. Fokus auf Windows Server (AD DC), Linux VMs, Docker-Container und Netzwerksegmentierung.</p>
+                    <a href="https://github.com/ahmetkenkes" target="_blank" class="card-link">github.com/homelab &rarr;</a>
+                </div>
+                <div class="card">
+                    <h3>System Inventory Automation</h3>
+                    <p>Entwicklung eines PowerShell-Skripts zur automatisierten Erfassung von Hardware- und Software-Assets im Netzwerk, inkl. Export nach CSV/JSON.</p>
+                    <a href="https://github.com/ahmetkenkes" target="_blank" class="card-link">github.com/sys-inventory &rarr;</a>
+                </div>
+            </div>
+
+            <h2>Zertifikate</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>IT-Grundlagen & Netzwerke</h3>
+                    <p>Absolvierte Kurse zu den Grundlagen der Informatik, Betriebssysteme (Linux/Windows) und Netzwerktechnologien (TCP/IP, DNS, DHCP).</p>
+                    <a href="#" class="card-link">Zertifikat ansehen &rarr;</a>
+                </div>
+            </div>
+
+            <h2>Kontakt</h2>
+            <div class="contact-box">
+                <div class="contact-item">
+                    <strong>E-Mail:</strong> <a href="mailto:ahmet.kenkes@icloud.com">ahmet.kenkes@icloud.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>GitHub:</strong> <a href="https://github.com/ahmetkenkes" target="_blank">@ahmetkenkes</a>
+                </div>
+                <div class="contact-item">
+                    <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/ahmetkenkes" target="_blank">Ahmet Kenkes</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>            object-fit: cover;
             border: 2px solid var(--accent);
         }
         h1 {
