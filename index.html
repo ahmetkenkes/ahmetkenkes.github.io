@@ -232,27 +232,9 @@
     </div>
 
     <h2><i class="fa-solid fa-code-branch"></i> Projekte & Repositories</h2>
-    <div class="project-grid">
-        <div class="project">
-            <h3><span>System Inventory Script</span> <i class="fa-brands fa-github"></i></h3>
-            <div class="tech-stack">
-                <span class="badge">PowerShell</span>
-                <span class="badge">Automation</span>
-            </div>
-            <p>PowerShell-Skript zur automatisierten Erfassung von System-, Hardware- und Netzwerkkonfigurationen.</p>
-            <a href="https://github.com/ahmetkenkes/System-Inventory-Script" target="_blank">Repository ansehen <i class="fa-solid fa-arrow-right-long"></i></a>
-        </div>
-
-        <div class="project">
-            <h3><span>Linux & Network Notes</span> <i class="fa-brands fa-github"></i></h3>
-            <div class="tech-stack">
-                <span class="badge">Linux</span>
-                <span class="badge">Networking</span>
-                <span class="badge">Bash</span>
-            </div>
-            <p>Dokumentation und Befehlsreferenzen für Linux-Systemadministration und Netzwerkgrundlagen.</p>
-            <a href="https://github.com/ahmetkenkes/Linux-Network-Notes" target="_blank">Repository ansehen <i class="fa-solid fa-arrow-right-long"></i></a>
-        </div>
+    <div class="project-grid" id="github-projects">
+        <!-- Projeler GitHub API üzerinden otomatik yüklenecek -->
+        <p style="color: var(--text-muted);">Lade Projekte von GitHub...</p>
     </div>
 
     <h2><i class="fa-solid fa-award"></i> Zertifikate & Zeugnisse</h2>
@@ -285,6 +267,43 @@
             <span>LinkedIn: <a href="https://linkedin.com/in/ahmetkenkes" target="_blank">linkedin.com/in/ahmetkenkes</a></span>
         </div>
     </div>
+
+    <script>
+        async function fetchGitHubProjects() {
+            const container = document.getElementById('github-projects');
+            try {
+                const response = await fetch('https://api.github.com/users/ahmetkenkes/repos?sort=updated&per_page=6');
+                const repos = await response.json();
+                
+                if (!Array.isArray(repos)) return;
+
+                container.innerHTML = '';
+                
+                repos.forEach(repo => {
+                    if (repo.fork) return; // Forklananları gizle, sadece kendi projelerini al
+
+                    const description = repo.description ? repo.description : 'Keine Beschreibung verfügbar.';
+                    const language = repo.language ? `<span class="badge">${repo.language}</span>` : '';
+
+                    const projectCard = `
+                        <div class="project">
+                            <h3><span>${repo.name}</span> <i class="fa-brands fa-github"></i></h3>
+                            <div class="tech-stack">
+                                ${language}
+                            </div>
+                            <p>${description}</p>
+                            <a href="${repo.html_url}" target="_blank">Repository ansehen <i class="fa-solid fa-arrow-right-long"></i></a>
+                        </div>
+                    `;
+                    container.innerHTML += projectCard;
+                });
+            } catch (error) {
+                container.innerHTML = '<p style="color: var(--text-muted);">Projekte konnten nicht geladen werden.</p>';
+            }
+        }
+
+        fetchGitHubProjects();
+    </script>
 
 </body>
 </html>
